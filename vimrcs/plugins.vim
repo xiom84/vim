@@ -20,6 +20,7 @@ Plugin 'bling/vim-airline'
 "Plugin 'garbas/vim-snipmate'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/mayansmoke'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'sjl/gundo.vim'
 
