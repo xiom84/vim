@@ -1,13 +1,13 @@
-cd ~/.vim_runtime
+cd ~/vim
 
-echo 'set runtimepath+=~/.vim_runtime
-source ~/.vim_runtime/vimrcs/plugins.vim
+echo 'set runtimepath+=~/vim
+source ~/vim/vimrcs/plugins.vim
 ' > ~/_vimrc
 
-echo 'set runtimepath+=~/.vim_runtime
-source ~/.vim_runtime/vimrcs/basic.vim
+echo 'set runtimepath+=~/vim
+source ~/vim/vimrcs/basic.vim
 try
-source ~/.vim_runtime/my_configs.vim
+source ~/vim/my_configs.vim
 catch
 endtry' > ~/.gvimrc
 

@@ -5,8 +5,6 @@
 
 set history=700
 
-filetype plugin on
-filetype indent on
 syntax on
 
 " Set to auto read when a file is changed from the outside
@@ -55,7 +53,8 @@ set tm=500
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme mayansmoke
+colorscheme molokai
+"colorscheme mayansmoke
 "colorscheme wombat
 
 if has('win32') || has('win16')
@@ -77,6 +76,10 @@ set guioptions=M
 set encoding=utf8
 
 set ffs=unix,dos,mac "Default file types
+
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -283,6 +286,7 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
+let NERDTreeDirArrows=1
 " Do not synchronize nerd tree tabs
 "let g:nerdtree_tabs_synchronize_view = 0
 "
@@ -394,7 +398,7 @@ endfunction
 
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
-set relativenumber
+"set relativenumber
 set number
 
 "map <F5> <Esc>:EnableFastPHPFolds<Cr>
@@ -410,5 +414,5 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
