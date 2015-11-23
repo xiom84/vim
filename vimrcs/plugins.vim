@@ -1,81 +1,87 @@
 set nocompatible
 filetype off
 
+let mapleader = ","
+let g:mapleader = ","
+
 " set the runtime path to include Vundle and initialize
-set rtp+=~/vim/plugins/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
+call plug#begin('~/vim/plugged')
 
 " ---------------------
 " Active
 " --------------------- 
 
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 
 " Colors
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-scripts/mayansmoke'
-Plugin 'tomasr/molokai'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'Lokaltog/vim-distinguished'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/mayansmoke'
+Plug 'tomasr/molokai'
+Plug 'junegunn/seoul256.vim'
+Plug 'Lokaltog/vim-distinguished'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'scrooloose/nerdcommenter'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/nerdcommenter'
 
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 
 " auto code checking
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 
+Plug 'rking/ag.vim'
+Plug 'hoffstein/vim-tsql'
+
+Plug 'vim-scripts/taglist.vim'
+
+"js
+Plug 'othree/yajs.vim'
+Plug 'isRuslan/vim-es6'
 
 " ---------------------
 " Inactive
 " --------------------- 
 
 " snippets
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
 
 "Cool js needs npm install not working yet
-"Plugin 'marijnh/tern_for_vim'
+"Plug 'marijnh/tern_for_vim'
 
 
-"Plugin 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 
 " closing brackets
-"Plugin 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 
-" Plugin 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " These are the tweaks I apply to YCM's config, you don't need them but they might help.
 " YCM gives you popups and splits by default that some people might not like, so these should tidy it up a bit for you.
 "let g:ycm_add_preview_to_completeopt=0
 "let g:ycm_confirm_extra_conf=0
 "set completeopt-=preview
 
-"Plugin 'jelera/vim-javascript-syntax'
+"Plug 'jelera/vim-javascript-syntax'
 
 " Autocomplete
-"Plugin 'Shougo/vimproc'
-"Plugin 'Shougo/unite.vim'
-"Plugin 'm2mdas/phpcomplete-extended'
+"Plug 'Shougo/vimproc'
+"Plug 'Shougo/unite.vim'
+"Plug 'm2mdas/phpcomplete-extended'
 
 
 
+call plug#end()
 
-call vundle#end()            " required
 filetype plugin indent on    " required
 

@@ -10,8 +10,8 @@ syntax on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-let mapleader = ","
-let g:mapleader = ","
+"let mapleader = ","
+"let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -94,8 +94,8 @@ set noswapfile
 " => Text, tab and indent related
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set smarttab
      
 set lbr
@@ -326,7 +326,9 @@ map <leader>ba :1,1000 bd!<cr>
 "map <c-b> :CtrlPBuffer<cr>
 
 "let g:ctrlp_max_height = 20
-"let g:ctrlp_custom_ignore = 'sessions\|^\.git\'
+let g:ctrlp_custom_ignore = 'sessions\|^\.git\'
+set wildignore+=*/vendor/**
+set wildignore+=*/app/cache/**
 
 
 map <leader><space> :vim //gj %<left><left><left><left><left>
@@ -416,3 +418,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
