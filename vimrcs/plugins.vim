@@ -60,12 +60,13 @@ Plug 'ap/vim-css-color'
 " ====================================================================== 
 
 "  syntax
-Plug 'othree/yajs.vim'
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/es.next.syntax.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 "  indentation
-Plug 'gavocanov/vim-js-indent'
+Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
 
 "  jsx
 Plug 'mxw/vim-jsx'
@@ -132,6 +133,7 @@ Plug 'tomtom/tcomment_vim'
 " all about surroundings
 Plug 'tpope/vim-surround'
 
+Plug 'moskytw/nginx-contrib-vim'
 
 " ====================================================================== 
 "  UI -- load last
@@ -143,8 +145,8 @@ Plug 'haya14busa/vim-asterisk'
 " show registers in split if use \" or <C-R>
 Plug 'junegunn/vim-peekaboo'
 
-Plug 'vim-airline/vim-airline'
-"Plug 'ap/vim-buftabline'
+"Plug 'vim-airline/vim-airline'
+Plug 'ap/vim-buftabline'
 
 
 
@@ -160,7 +162,6 @@ Plug 'vim-airline/vim-airline'
 
 
 
-" Plug 'mustache/vim-mustache-handlebars'
 
 " snippets
 "Plug 'MarcWeber/vim-addon-mw-utils'

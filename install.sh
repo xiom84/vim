@@ -11,4 +11,4 @@ source ~/vim/my_configs.vim
 catch
 endtry' > ~/.gvimrc
 
-echo "VIM Installation complete. Do not forget to update plugin via :PluginInstall. Be happy ;)"
+echo "VIM Installation complete. Do not forget to update plugin via :PlugInstall. Be happy ;)"

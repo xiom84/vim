@@ -1,8 +1,5 @@
 set encoding=utf-8 nobomb
-set ffs=unix,dos,mac "Default file types
 " scriptencoding utf-8
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -13,8 +10,8 @@ set history=700
 
 syntax on
 
-" Set to auto read when a file is changed from the outside
-set autoread
+set lbr
+
 
 "let mapleader = ","
 "let g:mapleader = ","
@@ -26,33 +23,31 @@ nmap <leader>w :w!<cr>
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursors when moving vertical...
-set so=7
+set scrolloff=8
+set sidescrolloff=16
 
-set wildmenu "Turn on Wild menu
-set ruler "Always show current position
+set title
 
-set hid "Change buffer - without saving
+set ruler                   "Always show current position
 
-"Set backspace config
-set backspace=eol,start,indent
+
+set synmaxcol=512           "dont syntax highlight long lines
+
+set completeopt-=preview
+
+set colorcolumn=80
+"set cursorline
+
 set whichwrap+=<,>,h,l
 
-set ignorecase "Ignore case when searching
-set smartcase
-
-set hlsearch "Highlight search things
-
-set incsearch "Make search act like search in modern browsers
-
-set showmatch "Show matching bracets when text indicator is over them
 set mat=2 "How many tenths of a second to blink
-
-"set foldcolumn=1
 
 " No sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
+set ttyfast
+set lazyredraw
 set tm=500
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,31 +79,184 @@ set guioptions=M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Status line - most of this is handled by vim-airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+set showcmd                 " incomplete commands on
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Wild and file globbing
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+set browsedir=buffer                    " browse files in same dir as open file
+set wildmenu                            " enhanced command line completion
+set wildmode=list:longest               " complete files like a shell
+set wildignorecase
+
+set wildignore+=.git
+set wildignore+=*/vendor/**
+set wildignore+=*/app/cache/**
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.m4a,*.mp3,*.oga,*.ogg,*.wav,*.webm
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.swp,.lock,.DS_Store,._*
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """"""""""""""""""""""""""""""""""""""""""""""""""""
+set autoread                    " reload files if they were edited elsewhere
+
+set fileformats=unix,dos,mac "Default file types
+set fileformat=unix
+
 " Turn backup off
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => splits and buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+set splitbelow
+set splitright
+set fillchars=vert:\|
+
+set hidden                     "Change buffer - without saving
+
+" reveal already opened files from the quickfix window instead of opening new buffers
+set switchbuf=useopen
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
+" => trailing whitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab
-set shiftwidth=4
+set list
+set listchars=""                    " reset
+set listchars=tab:→\ 
+set listchars+=trail:·
+set listchars+=extends:»              " show cut off when nowrap
+set listchars+=precedes:«
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => diffing
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Note this is += since fillchars was defined in splits
+set fillchars+=diff:⣿
+set diffopt=vertical                  " Use in vertical diff mode
+set diffopt+=filler                   " blank lines to keep sides aligned
+set diffopt+=iwhite                   " Ignore whitespace changes
+
+" ----------------------------------------------------------------------------
+" Input auto-formatting
+" ----------------------------------------------------------------------------
+
+set formatoptions=
+set formatoptions+=c                  " Auto-wrap comments using textwidth
+set formatoptions+=r                  " Continue comments by default
+set formatoptions-=o                  " do not continue comment using o or O
+set formatoptions+=q                  " continue comments with gq
+set formatoptions+=n                  " Recognize numbered lists
+set formatoptions+=2                  " Use indent from 2nd line of a paragraph
+set formatoptions+=l                  " Don't break lines that are already long
+set formatoptions+=1                  " Break before 1-letter words
+" Vim 7.4 only: no // comment when joining commented lines
+if v:version >= 704 | set formatoptions+=j | endif
+
+set nrformats-=octal                  " never use octal when <C-x> or <C-a>
+
+
+
+" ----------------------------------------------------------------------------
+" Whitespace
+" ----------------------------------------------------------------------------
+
+set nowrap
+set nojoinspaces                      " J command doesn't add extra space
+
+
+" ----------------------------------------------------------------------------
+" Indenting - overridden by indent plugins
+" ----------------------------------------------------------------------------
+
+set autoindent                        " indent when creating newline
+set smartindent                       " add an indent level inside braces
+set cindent                           " testing cindent...
+
+" for autoindent, use same spaces/tabs mix as previous line, even if
+" tabs/spaces are mixed. Helps for docblock, where the block comments have a
+" space after the indent to align asterisks
+set copyindent
+
+" Try not to change the indent structure on "<<" and ">>" commands. I.e. keep
+" block comments aligned with space if there is a space there.
+set preserveindent
+
+
+
+" ----------------------------------------------------------------------------
+" Tabbing - overridden by editorconfig, after/ftplugin
+" ----------------------------------------------------------------------------
+
+set expandtab                         " default to spaces instead of tabs
+set shiftwidth=2                      " softtabs are 2 spaces for expandtab (4?)
+
+" Alignment tabs are two spaces, and never tabs. Negative means use same as
+" shiftwidth (so the 2 actually doesn't matter).
+set softtabstop=-2
+
+" real tabs render 4 wide. Applicable to HTML, PHP, anything using real tabs.
+" I.e., not applicable to JS.
 set tabstop=4
+
+" use multiple of shiftwidth when shifting indent levels.
+" this is OFF so block comments don't get fudged when using ">>" and "<<"
+set noshiftround
+
+" When on, a <Tab> in front of a line inserts blanks according to
+" 'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.  A
 set smarttab
-     
-set lbr
-set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap
+"set backspace=indent,eol,start        " bs anything
+set backspace=eol,start,indent "Set backspace config
 
-"set wrap "Wrap lines
+" ----------------------------------------------------------------------------
+" Match and search
+" ----------------------------------------------------------------------------
+
+set showmatch                         " hl matching parens
+set hlsearch
+set incsearch
+set wrapscan                          " Searches wrap around end of the file.
+set ignorecase
+set smartcase
+
+" The Silver Searcher
+if executable('ag') | set grepprg=ag\ --nogroup\ --nocolor | endif
+
+
+
+" ----------------------------------------------------------------------------
+" Autocommands
+" ----------------------------------------------------------------------------
+
+if has('autocmd')
+  " Resize splits when the window is resized
+  autocmd vimrc VimResized * :wincmd =
+
+  " see after/ftplugin/*.vim for more filetype specific stuff
+endif
+
+" leave this down here since it trims local settings
+set secure                            " no unsafe local vimrc commands
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -329,8 +477,6 @@ map <leader>ba :1,1000 bd!<cr>
 
 "let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'sessions\|^\.git\'
-set wildignore+=*/vendor/**
-set wildignore+=*/app/cache/**
 
 
 map <leader><space> :vim //gj %<left><left><left><left><left>
@@ -453,3 +599,12 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'ap/vim-buftabline'
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:buftabline_numbers=1              " show buffernr
+
+
+
