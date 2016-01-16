@@ -7,48 +7,160 @@ let g:mapleader = ","
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/vim/plugged')
 
-" ---------------------
+
 " Active
-" --------------------- 
+" ----------------------------------------------------------------------- 
 
-Plug 'bling/vim-airline'
+" ====================================================================== 
+"  PHP
+" ====================================================================== 
+
+" twig syntax
+Plug 'evidens/vim-twig'
+
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+
+" Fix indent of HTML in all PHP files -- basically adds indent/html.vim
+" when outside of PHP block.
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+
+" PHP Documentor
+Plug 'tobyS/vmustache', { 'for': ['php', 'blade'] }
+            \| Plug 'tobyS/pdv', { 'for': ['php', 'blade'] }
+
+" Completion
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+
+" ====================================================================== 
+"  HTML/CSS
+" ====================================================================== 
+
+ " HTML5 elements omnicompletion C-x C-o
+Plug 'othree/html5.vim'
+Plug 'othree/csscomplete.vim'
+
+" HTML5 syntax
+Plug 'othree/html5-syntax.vim'
 
 
-" Colors
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-scripts/mayansmoke'
-Plug 'tomasr/molokai'
-Plug 'junegunn/seoul256.vim'
-Plug 'Lokaltog/vim-distinguished'
+" creates less filetype
+Plug 'groenewege/vim-less'
 
-Plug 'scrooloose/nerdtree'
+" css.vim provides @media syntax highlighting where hail2u doesn't
+" JulesWang/css.vim is the active repo for the css.vim bundled with vim
+" hail2u extends vim's css highlighting
+Plug 'JulesWang/css.vim'
+            \| Plug 'hail2u/vim-css3-syntax'
+            \| Plug 'cakebaker/scss-syntax.vim'
 
-Plug 'tpope/vim-fugitive'
+Plug 'ap/vim-css-color'
 
-Plug 'kien/ctrlp.vim'
+" ====================================================================== 
+"  Javascript
+" ====================================================================== 
+
+"  syntax
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+
+"  indentation
+Plug 'gavocanov/vim-js-indent'
+
+"  jsx
+Plug 'mxw/vim-jsx'
+
+"  json
+Plug 'elzr/vim-json'
+
+"  code completion
 
 
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'sjl/gundo.vim'
-
-" auto code checking
+"  linting
 Plug 'scrooloose/syntastic'
 
 
-Plug 'rking/ag.vim'
-Plug 'hoffstein/vim-tsql'
+" Formatter
 
-Plug 'vim-scripts/taglist.vim'
 
-"js
-Plug 'othree/yajs.vim'
 Plug 'isRuslan/vim-es6'
+
+
+" ====================================================================== 
+"  Themes
+" ====================================================================== 
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/mayansmoke'
+Plug 'junegunn/seoul256.vim'
+Plug 'Lokaltog/vim-distinguished'
+
+
+" ====================================================================== 
+"  Other
+" ====================================================================== 
+"  Git
+Plug 'tpope/vim-fugitive'
+"  conflict marker
+Plug 'rhysd/conflict-marker.vim'
+
+"  Search / Browse
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+
+"  Undoing things
+Plug 'sjl/gundo.vim'
+
+"  <F6>
+Plug 'nathanaelkane/vim-indent-guides'
+
+"  Matching HTML Tags
+Plug 'gregsexton/MatchTag'
+
+ " add gS to smart split lines like comma lists and html tags and gJ to do the opposite
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Aligning stuff
+"Plug 'godlygeek/tabular', { 'on': ['Tabularize'] }
+Plug 'junegunn/vim-easy-align'
+
+
+" Comment things
+Plug 'tomtom/tcomment_vim'
+
+" all about surroundings
+Plug 'tpope/vim-surround'
+
+
+" ====================================================================== 
+"  UI -- load last
+" ====================================================================== 
+
+" <Plug> to not move on * search function
+Plug 'haya14busa/vim-asterisk'
+
+" show registers in split if use \" or <C-R>
+Plug 'junegunn/vim-peekaboo'
+
+Plug 'vim-airline/vim-airline'
+"Plug 'ap/vim-buftabline'
+
+
+
+
+
+
 
 " ---------------------
 " Inactive
 " --------------------- 
+" Plug 'hoffstein/vim-tsql'
+" Plug 'vim-scripts/taglist.vim'
+
+
+
+" Plug 'mustache/vim-mustache-handlebars'
 
 " snippets
 "Plug 'MarcWeber/vim-addon-mw-utils'

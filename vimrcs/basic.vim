@@ -1,4 +1,10 @@
-"execute pathogen#infect()
+set encoding=utf-8 nobomb
+set ffs=unix,dos,mac "Default file types
+" scriptencoding utf-8
+
+
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,9 +79,6 @@ endif
 set guioptions=M
   
 "set gfn=Bitstream\ Vera\ Sans\ Mono:h10
-set encoding=utf8
-
-set ffs=unix,dos,mac "Default file types
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -218,7 +221,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MISC
@@ -254,7 +256,7 @@ let php_folding = 0
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
@@ -422,3 +424,32 @@ let g:syntastic_check_on_wq = 0
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'othree/javascript-libraries-syntax.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:used_javascript_libs = 'jquery,handlebars'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'junegunn/vim-easy-align'
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
