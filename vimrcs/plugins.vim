@@ -38,6 +38,11 @@ Plug 'SirVer/ultisnips'
 Plug 'sniphpets/sniphpets'
 Plug 'sniphpets/sniphpets-symfony'
 
+" Code fixer
+Plug 'stephpy/vim-php-cs-fixer'
+
+" Correct php indentation
+Plug '2072/php-indenting-for-vim'
 
 " ----------------------------------------------------------------------------
 "  HTML/CSS
@@ -142,6 +147,10 @@ Plug 'tpope/vim-surround'
 
 Plug 'moskytw/nginx-contrib-vim'
 
+" DB support
+Plug 'vim-scripts/dbext.vim'
+
+
 
 " ----------------------------------------------------------------------------
 "  UI -- load last
@@ -175,9 +184,6 @@ Plug 'ap/vim-buftabline'
 
 "Cool js needs npm install not working yet
 "Plug 'marijnh/tern_for_vim'
-
-
-"Plug 'SirVer/ultisnips'
 
 
 " closing brackets

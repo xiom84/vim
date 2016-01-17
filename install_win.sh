@@ -8,6 +8,7 @@ echo 'set runtimepath+=~/vim
 source ~/vim/vimrcs/basic.vim
 try
 source ~/vim/vimrcs/pluginconfiguration.vim
+source ~/vim/vimrcs/syntastic.vim
 source ~/vim/vimrcs/functions.vim
 catch
 endtry' > ~/.gvimrc
