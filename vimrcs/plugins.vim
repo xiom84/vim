@@ -31,6 +31,14 @@ Plug 'tobyS/vmustache', { 'for': ['php', 'blade'] }
 " Completion
 Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 
+" Symfony
+Plug 'qbbr/vim-symfony'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'sniphpets/sniphpets'
+Plug 'sniphpets/sniphpets-symfony'
+
 " ====================================================================== 
 "  HTML/CSS
 " ====================================================================== 

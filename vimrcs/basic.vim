@@ -608,3 +608,11 @@ let g:buftabline_numbers=1              " show buffernr
 
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'SirVer/ultisnips'
+" Plug 'sniphpets/sniphpets'
+" Plug 'sniphpets/sniphpets-symfony'
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
