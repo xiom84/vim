@@ -114,7 +114,7 @@ set switchbuf=useopen
 " ----------------------------------------------------------------------------
 set list
 set listchars=""                    " reset
-set listchars=tab:→\ 
+set listchars=tab:→\
 set listchars+=trail:·
 set listchars+=extends:»              " show cut off when nowrap
 set listchars+=precedes:«
@@ -251,8 +251,8 @@ iab debug $GLOBALS['debugger']->debug(print_r(, true));<esc><left><left><left><l
 " Set filetype
 " ----------------------------------------------------------------------------
 
-au BufRead,BufNewFile *.tpl.xhtml set filetype=smarty 
-au BufRead,BufNewFile *.tpl set filetype=smarty 
+au BufRead,BufNewFile *.tpl.xhtml set filetype=smarty
+au BufRead,BufNewFile *.tpl set filetype=smarty
 
 
 " ----------------------------------------------------------------------------

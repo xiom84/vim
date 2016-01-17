@@ -1,7 +1,6 @@
 " ----------------------------------------------------------------------------
 " WS - Clean up whitespace
 " ----------------------------------------------------------------------------
-
 function! g:CleanCode()
   %retab      " Replace tabs with spaces
   %s/\r/\r/eg " Turn DOS returns ^M into real returns
@@ -42,7 +41,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
